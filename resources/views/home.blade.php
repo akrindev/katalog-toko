@@ -3,8 +3,7 @@
 @section('title', 'Dian Busana')
 
 @section('content')
-
-            <div id="categories">
+<div id="categories">
 
             <div class="">
                 <h1 class="text-2xl font-semibold">Kategori</h1>
@@ -31,7 +30,7 @@
                         <div class="flex flex-col items-center">
                             <img src="{{ $product->image()->first()->url }}" alt="{{ $product->name }}" class="h-52 md:h-64 w-full object-cover rounded-md transition ease-in-out duration-200 transform hover:scale-95">
                             <span class="font-semibold">{{ $product->name }}</span>
-                            <span class="font-mono">Rp. 100.000</span>
+                            <span class="font-mono">Rp. {{ number_format($product->price) }}</span>
                         </div>
                     </a>
                 @empty

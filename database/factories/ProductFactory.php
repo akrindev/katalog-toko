@@ -26,7 +26,8 @@ class ProductFactory extends Factory
             'name' => $this->faker->name,
             'slug'  => Str::slug($this->faker->name),
             'description'   => $this->faker->text,
-            'size'  => $this->faker->randomDigit(),
+            'price' => $this->faker->numberBetween(80000, 120000),
+            'size'  => "s,m,l,xl",
             'discount'  => $this->faker->numberBetween(5,35),
             'stock' => $this->faker->numberBetween(0,1)
         ];

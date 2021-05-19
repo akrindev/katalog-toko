@@ -22,7 +22,7 @@ class ImageFactory extends Factory
     public function definition()
     {
         return [
-            'url' => 'http://placekitten.com/100/100'
+            'url' => 'https://source.unsplash.com/random'
         ];
     }
 }

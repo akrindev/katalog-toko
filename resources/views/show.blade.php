@@ -3,120 +3,75 @@
 @section('title', $product->name)
 
 @section('content')
+<div id="list-products" class="flex flex-row">
 
-            <div id="list-products" class="flex flex-row">
+   <div x-data="{swiper: null}" x-init="swiper = new Swiper($refs.container, {
+      loop: true,
+      slidesPerView: 1,
+      spaceBetween: 0,
+      autoplay: {
+        delay:2000
+      },
 
-                <div x-data="{swiper: null}" x-init="swiper = new Swiper($refs.container, {
-                      loop: true,
-                      slidesPerView: 1,
-                      spaceBetween: 0,
+      breakpoints: {
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 0,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 0,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 0,
+        },
+      },
+    })" class="relative w-10/12 mx-auto flex flex-row">
+  <div class="absolute inset-y-0 left-0 z-10 flex items-center">
+    <button @click="swiper.slidePrev()" class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+      <svg viewBox="0 0 20 20" fill="currentColor" class="chevron-left w-6 h-6">
+        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+      </svg>
+    </button>
+  </div>
 
-                      autoplay: {
-                          delay: 3000
-                      },
-                      breakpoints: {
-                        640: {
-                          slidesPerView: 1,
-                          spaceBetween: 0,
-                        },
-                        768: {
-                          slidesPerView: 2,
-                          spaceBetween: 0,
-                        },
-                        1024: {
-                          slidesPerView: 3,
-                          spaceBetween: 0,
-                        },
-                      },
-                    })" class="relative w-11/12 mx-auto flex flex-row">
-                    <div class="absolute inset-y-0 left-0 z-10 flex items-center">
-                        <button @click="swiper.slidePrev()" class="bg-white -ml-2 lg:-ml-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
-                            <svg viewBox="0 0 20 20" fill="currentColor" class="chevron-left w-6 h-6">
-                                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
-                    </div>
+  <div class="swiper-container" x-ref="container">
+    <div class="swiper-wrapper">
+      <!-- Slides -->
 
-                    <div class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events" x-ref="container">
-                        <div class="swiper-wrapper" id="swiper-wrapper-c10dd1274bdeedf79" aria-live="off" style="transition-duration: 0ms; transform: translate3d(-1994px, 0px, 0px);"><div class="swiper-slide p-4 swiper-slide-duplicate" data-swiper-slide-index="0" role="group" aria-label="1 / 9" style="width: 332.333px;">
-                                <div class="flex flex-col rounded shadow overflow-hidden">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1679&amp;q=80" alt="">
-                                    </div>
-                                </div>
-                            </div><div class="swiper-slide p-4 swiper-slide-duplicate" data-swiper-slide-index="1" role="group" aria-label="2 / 9" style="width: 332.333px;">
-                                <div class="flex flex-col rounded shadow overflow-hidden">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1598951092651-653c21f5d0b9?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=80" alt="">
-                                    </div>
-                                </div>
-                            </div><div class="swiper-slide p-4 swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="2" role="group" aria-label="3 / 9" style="width: 332.333px;">
-                                <div class="flex flex-col rounded shadow overflow-hidden">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1598946423291-ce029c687a42?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=80" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Slides -->
-                            <div class="swiper-slide p-4 swiper-slide-duplicate-active" data-swiper-slide-index="0" role="group" aria-label="4 / 9" style="width: 332.333px;">
-                                <div class="flex flex-col rounded shadow overflow-hidden">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1679&amp;q=80" alt="">
-                                    </div>
-                                </div>
-                            </div>
+      @forelse ($product->image as $img)
 
-                            <div class="swiper-slide p-4 swiper-slide-duplicate-next" data-swiper-slide-index="1" role="group" aria-label="5 / 9" style="width: 332.333px;">
-                                <div class="flex flex-col rounded shadow overflow-hidden">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1598951092651-653c21f5d0b9?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=80" alt="">
-                                    </div>
-                                </div>
-                            </div>
+      <div class="swiper-slide p-4">
+        <div class="flex flex-col rounded shadow overflow-hidden">
+          <div class="">
+            <img class="h-48 w-64 object-cover" src="{{ $img->url }}" alt="{{ $product->name }}">
+          </div>
+        </div>
+      </div>
+      @empty
 
-                            <div class="swiper-slide p-4 swiper-slide-prev" data-swiper-slide-index="2" role="group" aria-label="6 / 9" style="width: 332.333px;">
-                                <div class="flex flex-col rounded shadow overflow-hidden">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1598946423291-ce029c687a42?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=80" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        <div class="swiper-slide p-4 swiper-slide-duplicate swiper-slide-active" data-swiper-slide-index="0" role="group" aria-label="7 / 9" style="width: 332.333px;">
-                                <div class="flex flex-col rounded shadow overflow-hidden">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1679&amp;q=80" alt="">
-                                    </div>
-                                </div>
-                            </div><div class="swiper-slide p-4 swiper-slide-duplicate swiper-slide-next" data-swiper-slide-index="1" role="group" aria-label="8 / 9" style="width: 332.333px;">
-                                <div class="flex flex-col rounded shadow overflow-hidden">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1598951092651-653c21f5d0b9?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=80" alt="">
-                                    </div>
-                                </div>
-                            </div><div class="swiper-slide p-4 swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="2" role="group" aria-label="9 / 9" style="width: 332.333px;">
-                                <div class="flex flex-col rounded shadow overflow-hidden">
-                                    <div class="flex-shrink-0">
-                                        <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1598946423291-ce029c687a42?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=500&amp;q=80" alt="">
-                                    </div>
-                                </div>
-                            </div></div>
-                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+      @endforelse
 
-                    <div class="absolute inset-y-0 right-0 z-10 flex items-center">
-                        <button @click="swiper.slideNext()" class="bg-white -mr-2 lg:-mr-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
-                            <svg viewBox="0 0 20 20" fill="currentColor" class="chevron-right w-6 h-6">
-                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+      {{-- slides --}}
+    </div>
+  </div>
+
+  <div class="absolute inset-y-0 right-0 z-10 flex items-center">
+    <button @click="swiper.slideNext()" class="bg-white -mr-2 lg:-mr-4 flex justify-center items-center w-10 h-10 rounded-full shadow focus:outline-none">
+      <svg viewBox="0 0 20 20" fill="currentColor" class="chevron-right w-6 h-6">
+        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+      </svg>
+    </button>
+  </div>
+</div>
 
             </div>
 
             <div class="md:flex lg:justify-between space-y-3 items-center my-3 lg:pr-3">
                 <div class="flex flex-col">
-                    <h1 class="text-2xl font-extrabold">Kitty Pet</h1>
-                    <span class="font-mono">Rp. 100.000</span>
+                    <h1 class="text-2xl font-extrabold">{{ $product->name }}</h1>
+                    <span class="font-mono">Rp. {{ number_format($product->price) }}</span>
                 </div>
                 <div>
                     <button class="bg-green-500 hover:bg-green-700 text-white md:px-9 py-2 rounded-xl flex items-center justify-center space-x-2 w-full md:w-auto">
@@ -132,8 +87,7 @@
             <div class="my-5">
                 <h2 class="text-2xl font-bold">Deskripsi</h2>
                 <div class="prose lg:prose-lg">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem eius laboriosam doloremque dicta optio, nihil ratione ex porro ullam consequatur ab repudiandae, qui tenetur recusandae aliquam beatae molestiae accusantium. Atque!</p>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit quas corrupti exercitationem voluptate fuga, soluta optio? Perferendis harum libero laboriosam magni, ut minima esse ipsa repudiandae porro? Dolor, fugiat quisquam?</p>
+                    {{ $product->description }}
                 </div>
             </div>
 

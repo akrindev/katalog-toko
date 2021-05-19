@@ -689,18 +689,22 @@ video {
 	min-height: 100vh;
 }.w-full {
 	width: 100%;
-}.w-11\/12 {
-	width: 91.666667%;
+}.w-10\/12 {
+	width: 83.333333%;
 }.w-10 {
 	width: 2.5rem;
 }.w-6 {
 	width: 1.5rem;
 }.w-5 {
 	width: 1.25rem;
+}.w-48 {
+	width: 12rem;
+}.w-56 {
+	width: 14rem;
+}.w-64 {
+	width: 16rem;
 }.max-w-5xl {
 	max-width: 64rem;
-}.flex-shrink-0 {
-	flex-shrink: 0;
 }.transform {
 	--tw-translate-x: 0;
 	--tw-translate-y: 0;
