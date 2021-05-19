@@ -5,6 +5,11 @@
             <div class="col col-login mx-auto">
               <div class="text-center mb-6">
                   {{--  --}}
+                  @forelse ($errors as $error)
+                      {{ $error }}
+                  @empty
+
+                  @endforelse
               </div>
               <form class="card" action="/login" method="post">
                 @csrf
