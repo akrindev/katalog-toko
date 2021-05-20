@@ -30,10 +30,10 @@
                     <tbody>
                     @forelse ($products as $product)
                     <tr>
-                      <td class="px-2"><img src="{{ $product->first_image() }}" alt="{{ $product->name }}" class="h-8" style="object-fit: cover"></td>
+                      <td class="px-2"><img src="{{ $product->image->first()->url }}" alt="{{ $product->name }}" class="h-8" style="object-fit: cover"></td>
                       <td class="pl-2">
                         {{ $product->name }} <div>
-                        <strong class="{{ $product->stock ? 'text-success' : 'text-danger' }}">{{ $product->stock ? 'tersedia' : 'habis' }}</strong> @if($product->discount > 0) .  {{ $product->discount }}% @endif - <a href="/product/edit/{{ $product->id}}">edit</a></div>
+                        <strong class="{{ $product->stock ? 'text-success' : 'text-danger' }}">{{ $product->stock ? 'tersedia' : 'habis' }}</strong> @if($product->discount > 0) .  {{ $product->discount }}% @endif - <a href="/dashboard/product/{{ $product->id}}">edit</a></div>
                       </td>
                       <td class="text-right text-muted d-none d-md-table-cell text-nowrap"><div>
                         @forelse ($product->categories as $category)

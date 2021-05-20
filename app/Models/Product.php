@@ -14,6 +14,8 @@ class Product extends Model
         'categories'
     ];
 
+    protected $guarded = [];
+
     public function categories()
     {
         return $this->belongsToMany(Category::class, 'product_category');
@@ -22,10 +24,5 @@ class Product extends Model
     public function image()
     {
         return $this->hasMany(Image::class);
-    }
-
-    public function first_image()
-    {
-        return $this->image()->first()->url;
     }
 }

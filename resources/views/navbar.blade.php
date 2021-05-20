@@ -45,13 +45,13 @@
               <div class="col-lg order-lg-first">
                 <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                   <li class="nav-item">
-                    <a href="/" class="nav-link active"><i class="fe fe-home"></i> Home</a>
+                    <a href="/dashboard" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"><i class="fe fe-home"></i> Dashboard</a>
                   </li>
                   <li class="nav-item">
-                    <a href="/setting" class="nav-link"><i class="fe fe-settings"></i> Pengaturan Toko</a>
+                    <a href="/dashboard/setting" class="nav-link {{ request()->routeIs('dashboard.setting') ? 'active' : '' }}"><i class="fe fe-settings"></i> Pengaturan Toko</a>
                   </li>
                   <li class="nav-item">
-                    <a href="/dashboard/products" class="nav-link"><i class="fe fe-shopping-bag"></i> Products</a>
+                    <a href="/dashboard/products" class="nav-link {{ request()->routeIs('dashboard.products') ? 'active' : '' }}"><i class="fe fe-shopping-bag"></i> Products</a>
                   </li>
                 </ul>
               </div>

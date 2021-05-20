@@ -42,6 +42,10 @@
             @include('navbar')
         @endauth
 
+        @if (session()->has('success'))
+            <div class="alert card-alert alert-success">{{ session('success') }}</div>
+        @endif
+
 
         <div class="my-3 my-md-5">
 
@@ -50,6 +54,19 @@
             </div>
         </div>
       </div>
+
+      @auth
+      <footer class="footer">
+        <div class="container">
+          <div class="row align-items-center flex-row-reverse">
+            <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+              Copyright Dian Busana © 2018
+            </div>
+          </div>
+        </div>
+      </footer>
+      @endauth
+
     </div>
   </body>
 </html>
