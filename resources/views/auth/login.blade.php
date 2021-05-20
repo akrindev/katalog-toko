@@ -22,7 +22,6 @@
                   <div class="form-group">
                     <label class="form-label">
                       Password
-                      <a href="{{ route('password.request') }}" class="float-right small">I forgot password</a>
                     </label>
                     <input type="password" name="password" class="form-control" id="password"
                     autocomplete="current-password" placeholder="Password">

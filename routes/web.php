@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\AdminController;
 
 
 require __DIR__.'/auth.php';
@@ -12,7 +13,14 @@ Route::get('/', [ShopController::class, 'home']);
 Route::get('/product/{slug}', [ShopController::class, 'show']);
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
+Route::prefix('dashboard')->middleware('auth')->group(function () {
+
+    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
+
+    // products
+    Route::get('/products', [AdminController::class, 'products']);
+    Route::get('/product/{id}', [AdminController::class, 'editProduct']);
+    Route::put('/product/{id}', [AdminController::class, 'updateProduct']);
+    Route::delete('/product/{id}', [AdminController::class, 'destroyProduct']);
+});

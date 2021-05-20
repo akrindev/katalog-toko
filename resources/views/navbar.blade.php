@@ -50,6 +50,9 @@
                   <li class="nav-item">
                     <a href="/setting" class="nav-link"><i class="fe fe-settings"></i> Pengaturan Toko</a>
                   </li>
+                  <li class="nav-item">
+                    <a href="/dashboard/products" class="nav-link"><i class="fe fe-shopping-bag"></i> Products</a>
+                  </li>
                 </ul>
               </div>
             </div>

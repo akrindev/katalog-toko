@@ -23,6 +23,8 @@ class CreateProductsTable extends Migration
             $table->integer('discount');
             $table->boolean('stock');
             $table->timestamps();
+
+            $table->index('slug');
         });
 
         Schema::create('product_category', function (Blueprint $table) {
