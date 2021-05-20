@@ -9,8 +9,10 @@ class Image extends Model
 {
     use HasFactory;
 
-    public function product()
+    protected $guarded = [];
+
+    public function products()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsToMany(Product::class, 'product_image');
     }
 }

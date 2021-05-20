@@ -28,7 +28,7 @@
 
                     <a href="{{ asset("/product/$product->slug") }}" class="relative hover:bg-purple-100 rounded-md p-1">
                         <div class="flex flex-col items-center">
-                            <img src="{{ $product->image->first()->url }}" alt="{{ $product->name }}" class="h-52 md:h-64 w-full object-cover rounded-md transition ease-in-out duration-200 transform hover:scale-95">
+                            <img src="{{ $product->images->first()->url }}" alt="{{ $product->name }}" class="h-52 md:h-64 w-full object-cover rounded-md transition ease-in-out duration-200 transform hover:scale-95">
                             <span class="font-medium font-sans text-md">{{ $product->name }}</span>
                             @if (!$product->discount)
                                 <span class="font-light font-mono text-sm">Rp. {{ number_format($product->price) }}</span>

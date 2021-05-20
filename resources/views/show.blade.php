@@ -40,7 +40,7 @@
     <div class="swiper-wrapper">
       <!-- Slides -->
 
-      @forelse ($product->image as $img)
+      @forelse ($product->images as $img)
 
       <div class="swiper-slide p-4">
         <div class="flex flex-col rounded shadow overflow-hidden">

@@ -31,6 +31,11 @@ class CreateProductsTable extends Migration
             $table->bigInteger('product_id');
             $table->bigInteger('category_id');
         });
+
+        Schema::create('product_image', function (Blueprint $table) {
+            $table->bigInteger('product_id');
+            $table->bigInteger('image_id');
+        });
     }
 
     /**
@@ -42,5 +47,6 @@ class CreateProductsTable extends Migration
     {
         Schema::dropIfExists('products');
         Schema::dropIfExists('products_category');
+        Schema::dropIfExists('products_image');
     }
 }

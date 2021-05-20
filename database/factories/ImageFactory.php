@@ -22,7 +22,7 @@ class ImageFactory extends Factory
     public function definition()
     {
         return [
-            'url' => 'https://source.unsplash.com/random'
+            'url' => 'https://source.unsplash.com/collection/31801959'
         ];
     }
 }

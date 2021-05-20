@@ -10,7 +10,7 @@ class Product extends Model
     use HasFactory;
 
     protected $with = [
-        'image',
+        'images',
         'categories'
     ];
 
@@ -21,8 +21,8 @@ class Product extends Model
         return $this->belongsToMany(Category::class, 'product_category');
     }
 
-    public function image()
+    public function images()
     {
-        return $this->hasMany(Image::class);
+        return $this->belongsToMany(Image::class, 'product_image');
     }
 }

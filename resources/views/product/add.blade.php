@@ -117,11 +117,11 @@
 {{-- img --}}
                 <div class="col-md-6">
                     <div class="form-group">
-                          <label class="form-label">Image Check</label>
-                          <div class="row gutters-sm">
+                          <label class="form-label">Foto Product</label>
+                          <div class="row gutters-sm" id="product-image">
                             <div class="col-6 col-sm-4">
                               <label class="imagecheck mb-4">
-                                <input name="imagecheck" type="checkbox" value="9" class="imagecheck-input">
+                                <input name="images[]" type="checkbox" value="0" class="imagecheck-input">
                                 <figure class="imagecheck-figure">
                                   <img src="//source.unsplash.com/random" alt="}" class="imagecheck-image">
                                 </figure>
@@ -131,7 +131,7 @@
                         </div>
 
                         <div class="form-group">
-                            <span id="addimg" class="btn btn-primary"> <i class="fe fe-plus"></i> tambah gambar</span>
+                            <span id="upload_widget" class="btn btn-primary"> <i class="fe fe-plus"></i> Tambah Foto Product</span>
                         </div>
                 </div>
 
@@ -171,5 +171,36 @@
     pdiskon.addEventListener('input', () => {
         diskon.value = getDiskon(harga.value, pdiskon.value)
     })
+</script>
+
+<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+var myWidget = cloudinary.createUploadWidget({
+  cloudName: 'dy2b35xr3',
+  uploadPreset: 'e1gv61od',
+  sources: ["local", "url", "camera", "image_search"],
+  multiple: false
+  },
+   (error, result) => {
+    if (!error && result && result.event === "success") {
+
+      let addedimg = `<div class="col-6 col-sm-4">
+                              <label class="imagecheck mb-4">
+                                <input name="images[]" type="checkbox" value="${result.info.secure_url}" class="imagecheck-input" checked="">
+                                <figure class="imagecheck-figure">
+                                  <img src="${result.info.thumbnail_url}" alt="}" class="imagecheck-image">
+                                </figure>
+                              </label>
+                            </div>`;
+
+      d('product-image').innerHTML += addedimg;
+    }
+  }
+)
+
+document.getElementById("upload_widget").addEventListener("click", function(){
+    myWidget.open();
+  }, false);
 </script>
 @endsection
