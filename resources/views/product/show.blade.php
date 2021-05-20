@@ -9,12 +9,17 @@
 
     <div class="row row-cards">
               <div class="col-12">
+                  <div class="mb-5">
+                      <div class="float-right">
+                          <a href="/dashboard/add/product/" class="btn btn-primary"><i class="fe fe-plus"></i> Tambah Product</a>
+                      </div>
+                  </div>
                 <div class="card">
                   <table class="table card-table table-vcenter">
                     <tbody>
                     @forelse ($products as $product)
                     <tr>
-                      <td class="px-2"><img src="{{ $product->first_image() }}" alt="{{ $product->name }}" class="h-8" style="object-fit: cover"></td>
+                      <td class="px-2"><img src="{{ $product->image->first()->url }}" alt="{{ $product->name }}" class="h-8" style="object-fit: cover"></td>
                       <td class="pl-2">
                         {{ $product->name }} <div>
                         <strong class="{{ $product->stock ? 'text-success' : 'text-danger' }}">{{ $product->stock ? 'tersedia' : 'habis' }}</strong> @if($product->discount > 0) .  {{ $product->discount }}% @endif - <a href="/dashboard/product/{{ $product->id}}">edit</a></div>

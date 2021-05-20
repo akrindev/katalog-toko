@@ -1,5 +1,5 @@
 <!-- footer -->
-    <div class="bg-purple-800">
+    <div class="bg-black">
         <footer class="flex items-center p-3">
             <div class="container mx-auto flex flex-col items-center">
                 <ul class="flex mx-auto text-white text-center">

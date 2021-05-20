@@ -21,6 +21,32 @@ class AdminController extends Controller
         return view('product.show', compact('products'));
     }
 
+    // add product
+    public function addProduct()
+    {
+        return view('product.add');
+    }
+
+    public function storeProduct()
+    {
+        $data = request()->validate([
+            'name' => 'required|min:5',
+            'description' => 'required|min:5',
+            'price' => 'required|integer',
+            'size' => 'required',
+            'discount' => 'nullable',
+            'stock' => 'required|boolean',
+        ]);
+
+        $product = Product::create($data);
+
+        session()->flash('success', 'Product berhasil di tambahkan');
+
+        return \redirect()->intended('/dashboard');
+    }
+
+    // edit product
+
     public function editProduct($id)
     {
         $product = Product::findOrFail($id);

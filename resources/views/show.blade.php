@@ -70,8 +70,16 @@
 
             <div class="md:flex lg:justify-between space-y-3 items-center my-3 lg:pr-3">
                 <div class="flex flex-col">
-                    <h1 class="text-2xl font-extrabold">{{ $product->name }}</h1>
-                    <span class="font-mono">Rp. {{ number_format($product->price) }}</span>
+                    <h1 class="text-2xl font-extrabold font-sans">{{ $product->name }}</h1>
+                    <div>
+                            @if (!$product->discount)
+                                <span class="font-light font-mono text-sm">Rp. {{ number_format($product->price) }}</span>
+                            @else
+                            <span class="py-1 px-2 mr-2 bg-yellow-400 text-yellow-800 rounded-md"> -{{ $product->discount }}%</span>
+                              <span class="font-light font-mono text-sm">Rp. {{ number_format( $product->price - ($product->price * ($product->discount/100))) }} </span>
+                              <strike class="text-gray-400 text-sm font-light font-mono">Rp. {{ number_format($product->price) }}</strike>
+                            @endif
+                    </div>
                 </div>
                 <div>
                     <button class="bg-green-500 hover:bg-green-700 text-white md:px-9 py-2 rounded-xl flex items-center justify-center space-x-2 w-full md:w-auto">
@@ -84,6 +92,29 @@
 
             </div>
 
+            {{-- ukuran --}}
+
+            <div class="my-5">
+                <h2 class="text-2xl font-bold">Size</h2>
+                <div>
+                    @forelse (explode(',', $product->size) as $size)
+                        <span class="px-2 py-0.5 rounded-md bg-blueGray-300 text-blueGray-700">{{ $size }}</span>
+                    @empty
+
+                    @endforelse
+                </div>
+            </div>
+
+            <div class="my-5">
+                <h2 class="text-2xl font-bold">Stock</h2>
+                <div>
+                    @if ($product->stock)
+                        <span class="text-green-600">Tersedia</span>
+                    @else
+                        <span class="text-rose-600">Habis</span>
+                    @endif
+                </div>
+            </div>
             <div class="my-5">
                 <h2 class="text-2xl font-bold">Deskripsi</h2>
                 <div class="prose lg:prose-lg">
