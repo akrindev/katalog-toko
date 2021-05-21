@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $toko = Shop::first();
 
-        View::share('toko_name', $toko->name);
-        View::share('toko_description', $toko->description);
+        View::share('toko_name', $toko->name ?? 'Toko');
+        View::share('toko_description', $toko->description ?? 'Toko');
     }
 }
