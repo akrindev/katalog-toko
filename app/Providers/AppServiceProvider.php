@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\URL;
 use App\Models\Shop;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if(env('APP_ENV') !== 'local') {
+            URL::forceScheme('https');
+        }
+
         $toko = Shop::first();
 
         View::share('toko_name', $toko->name ?? 'Toko');
