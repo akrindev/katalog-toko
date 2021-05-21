@@ -77,7 +77,7 @@
                           <span class="input-group-append" id="i-percent">
                             <span class="input-group-text">%</span>
                           </span>
-                          @error('size')
+                          @error('discount')
                           <div class="invalid-feedback">
                               {{ $message }}
                             </div>
@@ -86,7 +86,7 @@
                       </div>
 
                           <div class="col-6">
-                              <input type="number" class="form-control" id="diskon" disabled data-mask="000.000.000.000" data-mask-reverse="true">
+                              <input type="number" class="form-control" id="diskon" disabled>
                           </div>
 
                     </div>

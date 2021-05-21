@@ -1,8 +1,8 @@
 <div class="header py-4">
           <div class="container">
             <div class="d-flex">
-              <a class="header-brand" href="./index.html">
-                Dian Busana
+              <a class="header-brand" href="/">
+                {{ $toko_name }}
               </a>
               <div class="d-flex order-lg-2 ml-auto">
 

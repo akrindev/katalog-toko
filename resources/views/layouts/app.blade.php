@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>@yield('title') - Katalog Toko</title>
+    <title>@yield('title') - Katalog Toko </title>
     <meta name="description" content="@yield('description')">
 
     <link rel="stylesheet" href="{{ asset('css/app.css')}}">
@@ -17,7 +17,7 @@
         <!--  nav -->
         <nav class="bg-black text-blueGray-100">
             <div class="max-w-5xl mx-auto p-4 md:py-6 md:px-0 md:text-3xl font-semibold">
-                <a href="/">Dian Busana</a>
+                <a href="/">{{ $toko_name }}</a>
             </div>
         </nav>
 

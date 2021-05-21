@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $product->name)
+@section('title', $toko_name)
 
 @section('content')
 <div id="list-products" class="flex flex-row">

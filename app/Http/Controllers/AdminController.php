@@ -77,12 +77,30 @@ class AdminController extends Controller
             'name' => 'required|min:5',
             'description' => 'required|min:5',
             'price' => 'required|integer',
-            'size' => 'required',
+            'size' => 'nullable',
             'discount' => 'nullable',
             'stock' => 'required|boolean',
         ]);
 
-        $product->update($data);
+        DB::transaction(function () use ($data, $product) {
+
+            $product->update($data);
+
+            $product->images()->whereNotIn('url', \request('images'))->delete();
+
+            foreach (request()->images as $image) {
+                if(is_null($image)) {
+                    continue;
+                }
+
+                $product->images()->updateOrCreate([
+                    'url' => $image
+                ], [
+                    'url' => $image
+                ]);
+            }
+
+        });
 
         session()->flash('success', 'Product berhasil di update');
 

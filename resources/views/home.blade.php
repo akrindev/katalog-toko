@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Dian Busana')
+@section('title', $toko_name)
+@section('description', $toko_description)
 
 @section('content')
 <div id="categories">
@@ -9,12 +10,14 @@
                 <h1 class="text-2xl font-semibold">Kategori</h1>
             </div>
 
-            <div class="flex overflow-y-scroll space-x-2 my-5"
-                x-data="{categories: ['all','katun','rayon','benang','tuwil','tiedye']}">
+            <div class="flex flex-row overflow-x-scroll space-x-2 my-5">
 
-                <template x-for="i in categories">
-                    <a href="#" class="px-4 py-1 rounded-lg bg-purple-100 hover:bg-purple-600 hover:text-white" x-text="i"></a>
-                </template>
+                @forelse ((new App\Models\Category)->get() as $item)
+
+                <a href="#" class="flex-1 px-4 py-1 rounded-lg bg-purple-100 hover:bg-purple-600 hover:text-white" > {{ $item->name}} </a>
+                @empty
+
+                @endforelse
             </div>
             </div>
 
