@@ -37,9 +37,6 @@
                   </div>
                 </div>
               </form>
-              <div class="text-center text-muted">
-                Don't have account yet? <a href="./register.html">Sign up</a>
-              </div>
             </div>
           </div>
 @endsection

@@ -43,16 +43,25 @@ class AdminController extends Controller
             'stock' => 'required|boolean',
         ]);
 
-        DB::transaction(function() use ($data) {
+        $product = new Product;
+
+        DB::transaction(function() use ($data, $product) {
 
             $img = [];
-            foreach(request()->images as $image) {
+            if(! \request()->images) {
                 \array_push($img, [
-                    'url' => $image
+                    'url'   => 'http://placekitten.com/400/300'
                 ]);
+            } else {
+
+                foreach(request()->images as $image) {
+                    \array_push($img, [
+                        'url' => $image
+                    ]);
+                }
             }
 
-            $product = Product::create($data);
+            $product->insert($data);
 
             $product->images()->createMany($img);
         });
