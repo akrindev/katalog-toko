@@ -47,7 +47,7 @@
                       <label class="form-label">Harga</label>
                       <input class="form-control @error('price')
                       is-invalid
-                      @enderror" placeholder="Harga" name="price" data-mask="000.000.000.000.000" data-mask-reverse="true" required type="number" id="price" value="{{ old('price') }}">
+                      @enderror" placeholder="Harga" name="price" required type="number" id="price" value="{{ old('price') }}">
                       @error('price')
                       <div class="invalid-feedback">
                           {{ $message }}
@@ -119,14 +119,7 @@
                     <div class="form-group">
                           <label class="form-label">Foto Product</label>
                           <div class="row gutters-sm" id="product-image">
-                            <div class="col-6 col-sm-4">
-                              <label class="imagecheck mb-4">
-                                <input name="images[]" type="checkbox" value="0" class="imagecheck-input">
-                                <figure class="imagecheck-figure">
-                                  <img src="//source.unsplash.com/random" alt="}" class="imagecheck-image">
-                                </figure>
-                              </label>
-                            </div>
+
                           </div>
                         </div>
 
@@ -146,10 +139,6 @@
               </div>
     </div>
 </div>
-
-              <script>
-                require(['input-mask']);
-              </script>
 
 <script>
     function d(e) {
@@ -189,7 +178,7 @@ var myWidget = cloudinary.createUploadWidget({
                               <label class="imagecheck mb-4">
                                 <input name="images[]" type="checkbox" value="${result.info.secure_url}" class="imagecheck-input" checked="">
                                 <figure class="imagecheck-figure">
-                                  <img src="${result.info.thumbnail_url}" alt="}" class="imagecheck-image">
+                                  <img src="${result.info.secure_url}" alt="}" class="imagecheck-image">
                                 </figure>
                               </label>
                             </div>`;

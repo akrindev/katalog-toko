@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Image;
+use DB;
+
 
 class AdminController extends Controller
 {
@@ -33,12 +36,24 @@ class AdminController extends Controller
             'name' => 'required|min:5',
             'description' => 'required|min:5',
             'price' => 'required|integer',
-            'size' => 'required',
+            'size' => 'nullable',
             'discount' => 'nullable',
             'stock' => 'required|boolean',
         ]);
 
-        $product = Product::create($data);
+        DB::transaction(function() use ($data) {
+
+            $img = [];
+            foreach(request()->images as $image) {
+                \array_push($img, [
+                    'url' => $image
+                ]);
+            }
+
+            $product = Product::create($data);
+
+            $product->images()->createMany($img);
+        });
 
         session()->flash('success', 'Product berhasil di tambahkan');
 
