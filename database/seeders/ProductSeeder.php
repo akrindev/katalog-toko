@@ -19,7 +19,7 @@ class ProductSeeder extends Seeder
         Product::factory()
             ->count(2)
             ->has(Image::factory()->count(4))
-            ->has(Category::whereName('all'))
+            ->has(Category::factory())
             ->create();
     }
 }

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Schema;
 use App\Models\Shop;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,7 +31,9 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
 
-        $toko = Shop::first();
+        if(Schema::hasTable('shops')) {
+            $toko = Shop::first();
+        }
 
         View::share('toko_name', $toko->name ?? 'Toko');
         View::share('toko_description', $toko->description ?? 'Toko');
