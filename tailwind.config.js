@@ -4,6 +4,7 @@ const colors = require('tailwindcss/colors')
 module.exports = {
     mode: 'jit',
     purge: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './resources/views/**/*.blade.php',
     ],
     theme: {

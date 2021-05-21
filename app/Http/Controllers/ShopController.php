@@ -9,7 +9,7 @@ class ShopController extends Controller
 {
     public function home()
     {
-        $products = Product::latest()->paginate();
+        $products = Product::latest()->paginate(16);
 
         return view('home', compact('products'));
     }
@@ -20,5 +20,16 @@ class ShopController extends Controller
                     ->firstOrFail();
 
         return view('show', compact('product'));
+    }
+
+    public function category($name)
+    {
+        $products = Product::with([
+            'categories' => function ($query) use ($name) {
+                return $query->where('name', '=', $name);
+            }
+        ])->latest()->paginate(16);
+
+        return view('home', compact('products', 'name'));
     }
 }

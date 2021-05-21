@@ -14,15 +14,15 @@
 
                 @forelse ((new App\Models\Category)->get() as $item)
 
-                <a href="#" class="flex-1 px-4 py-1 rounded-lg bg-purple-100 hover:bg-purple-600 hover:text-white" > {{ $item->name}} </a>
+                <a href="/category/{{ $item->name }}" class="flex-1 px-4 py-1 rounded-lg bg-purple-100 hover:bg-purple-600 hover:text-white" > {{ $item->name }} </a>
                 @empty
 
                 @endforelse
             </div>
-            </div>
+</div>
 
             <div class="mb-3">
-                <h1 class="text-2xl font-bold">Products</h1>
+                <h1 class="text-2xl font-bold">Products {{ isset($name) ? $name : ''}}</h1>
             </div>
 
             <div id="list-products" class="grid grid-cols-2 md:grid-cols-4 gap-2" x-data="">
@@ -57,4 +57,6 @@
                 @endforelse
 
             </div>
+
+            {{ $products->links() }}
 @endsection

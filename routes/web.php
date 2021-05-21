@@ -11,6 +11,7 @@ Route::get('/', [ShopController::class, 'home']);
 
 
 Route::get('/product/{slug}', [ShopController::class, 'show']);
+Route::get('/category/{name}', [ShopController::class, 'category']);
 
 
 
