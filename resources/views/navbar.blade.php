@@ -48,10 +48,16 @@
                     <a href="/dashboard" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"><i class="fe fe-home"></i> Dashboard</a>
                   </li>
                   <li class="nav-item">
+                    <a href="/dashboard/products" class="nav-link {{ request()->routeIs('dashboard.products') ? 'active' : '' }}"><i class="fe fe-shopping-bag"></i>My Products</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/dashboard/products/category" class="nav-link {{ request()->routeIs('dashboard.products.category') ? 'active' : '' }}"><i class="fe fe-shopping-cart"></i>Category Product</a>
+                  </li>
+                  <li class="nav-item">
                     <a href="/dashboard/setting" class="nav-link {{ request()->routeIs('dashboard.setting') ? 'active' : '' }}"><i class="fe fe-settings"></i> Pengaturan Toko</a>
                   </li>
                   <li class="nav-item">
-                    <a href="/dashboard/products" class="nav-link {{ request()->routeIs('dashboard.products') ? 'active' : '' }}"><i class="fe fe-shopping-bag"></i> Products</a>
+                    <a href="/dashboard/setting/akun" class="nav-link {{ request()->routeIs('dashboard.setting.akun') ? 'active' : '' }}"><i class="fe fe-user"></i>Pengaturan Akun</a>
                   </li>
                 </ul>
               </div>

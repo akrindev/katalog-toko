@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Image;
+use App\Models\Shop;
 use DB;
 
 
@@ -111,12 +112,34 @@ class AdminController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        return view('product.show', compact('product'));
+        $product->images()->delete();
+
+        $product->delete();
+
+        session()->flash('success', 'Product di hapus');
+
+        return \redirect()->intended('/dashboard');
     }
 
     // setting
     public function setting()
     {
-        //
+        $toko = Shop::first();
+
+        return view('setting', compact('toko'));
+    }
+
+    public function updateSetting()
+    {
+        $data = request()->validate([
+            'name'  => 'required|min:2',
+            'description'  => 'nullable',
+        ]);
+
+        Shop::first()->update($data);
+
+        session()->flash('success', 'Data toko telah di ubah');
+
+        return \back();
     }
 }

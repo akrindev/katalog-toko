@@ -143,10 +143,21 @@
 
                         <div class="col-12">
                             <div class="form-footer">
-                                <button class="btn btn-primary btn-block" type="submit">Save</button>
+                                <button class="btn btn-primary" type="submit">Save</button>
                             </div>
                         </div>
                     </div>
+
+                    </form>
+
+                    <form onsubmit="confirm('Yakin mau hapus product ini?')" action="/dashboard/product/{{ $product->id }}" method="post">
+                        @csrf
+                        @method('DELETE')
+
+                        <div class="form-footer">
+                            <button type="submit" class="btn btn-danger float-right">hapus</button>
+                        </div>
+
 
                     </form>
 
