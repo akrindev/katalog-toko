@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AdminController;
-
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 require __DIR__.'/auth.php';
 
@@ -20,15 +20,21 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::get('/setting', [AdminController::class, 'setting'])->name('dashboard.setting');
     Route::put('/setting', [AdminController::class, 'updateSetting'])->name('dashboard.setting');
 
-    Route::get('/setting/akun', [AdminController::class, 'settingAkun'])->name('dashboard.setting.akun');
-    Route::put('/setting/akun', [AdminController::class, 'updateSettingAkun'])->name('dashboard.setting.akun');
+    Route::get('/setting/akun', [AuthenticatedSessionController::class, 'settingAccount'])->name('dashboard.setting.akun');
+    Route::patch('/setting/akun', [AuthenticatedSessionController::class, 'updateSettingAccount'])->name('dashboard.setting.akun');
+    Route::patch('/setting/akun/password', [AuthenticatedSessionController::class, 'updatePassword'])->name('dashboard.setting.password');
 
     Route::get('/add/product', [AdminController::class, 'addProduct']);
     Route::post('/add/product', [AdminController::class, 'storeProduct']);
 
     // products
     Route::get('/products', [AdminController::class, 'products'])->name('dashboard.products');
+
     Route::get('/products/category', [AdminController::class, 'productCategory'])->name('dashboard.products.category');
+    Route::post('/products/category', [AdminController::class, 'addCategory'])->name('dashboard.products.category.add');
+    Route::patch('/products/category/{id}', [AdminController::class, 'updateProductCategory'])->name('dashboard.products.category');
+    Route::delete('/products/category/{id}', [AdminController::class, 'deleteProductCategory'])->name('dashboard.products.category');
+
     Route::get('/product/{id}', [AdminController::class, 'editProduct']);
     Route::put('/product/{id}', [AdminController::class, 'updateProduct']);
     Route::delete('/product/{id}', [AdminController::class, 'destroyProduct']);

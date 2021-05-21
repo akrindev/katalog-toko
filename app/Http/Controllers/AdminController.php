@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Image;
 use App\Models\Shop;
 use DB;
@@ -139,6 +140,57 @@ class AdminController extends Controller
         Shop::first()->update($data);
 
         session()->flash('success', 'Data toko telah di ubah');
+
+        return \back();
+    }
+
+
+    // product category
+
+    public function productCategory()
+    {
+        $categories = Category::orderByDesc('id')->get();
+
+        return view('product.category', \compact('categories'));
+    }
+
+    public function addCategory()
+    {
+        $data = request()->validate([
+            'name'  => 'required'
+        ]);
+
+        Category::create($data);
+
+        session()->flash('success', 'kategori di tambahkan');
+
+        return back();
+    }
+
+    public function updateProductCategory($id)
+    {
+        $data = \request()->validate([
+            'name'  => 'required'
+        ]);
+
+        $category = Category::findOrFail($id);
+
+        $category->update($data);
+
+        session()->flash('success', 'Category di ubah');
+
+        return \back();
+    }
+
+    public function deleteProductCategory($id)
+    {
+        $category = Category::findOrFail($id);
+
+        $category->products()->detach();
+
+        $category->delete();
+
+        session()->flash('success', 'Category di hapus');
 
         return \back();
     }
