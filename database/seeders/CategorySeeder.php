@@ -15,7 +15,7 @@ class CategorySeeder extends Seeder
     public function run()
     {
         Category::firstOrCreate([
-            'name' => 'all'
+            'name' => 'Tidak Berkategori'
         ]);
     }
 }

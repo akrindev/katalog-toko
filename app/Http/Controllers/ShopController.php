@@ -24,11 +24,9 @@ class ShopController extends Controller
 
     public function category($name)
     {
-        $products = Product::with([
-            'categories' => function ($query) use ($name) {
-                return $query->where('name', '=', $name);
-            }
-        ])->latest()->paginate(16);
+        $products = Product::whereHas('categories', function ($query) use ($name) {
+                        $query->where('name', '=', $name);
+                    })->latest()->paginate(16);
 
         return view('home', compact('products', 'name'));
     }

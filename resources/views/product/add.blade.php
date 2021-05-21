@@ -110,8 +110,22 @@
                           {{ $message }}
                       </div>
                       @enderror
-                      </div>
+                    </div>
 
+                    <div class="form-group">
+                        <label class="form-label">Kategori</label>
+                        <div class="selectgroup selectgroup-pills">
+
+                            @foreach ((new App\Models\Category)->get() as $item)
+
+                            <label class="selectgroup-item">
+                                <input type="radio" name="category" value="{{ $item->id }}" class="selectgroup-input" {{ $loop->first ? 'checked="' : '' }}>
+                                <span class="selectgroup-button selectgroup-button-icon"> {{ $item->name }} </span>
+                            </label>
+
+                            @endforeach
+                        </div>
+                    </div>
 
                 </div>
 {{-- img --}}

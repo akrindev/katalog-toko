@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
@@ -61,7 +62,11 @@ class AdminController extends Controller
                 }
             }
 
-            $product->insert($data);
+            $cat = Category::find(request()->category);
+
+            $product->fill($data + ['slug' => Str::slug($data['name'].Str::random(5))])->save();
+
+            $product->categories()->sync($cat);
 
             $product->images()->createMany($img);
         });
@@ -96,6 +101,10 @@ class AdminController extends Controller
         DB::transaction(function () use ($data, $product) {
 
             $product->update($data);
+
+            $cat = Category::find(request()->category);
+
+            $product->categories()->sync($cat);
 
             $product->images()->whereNotIn('url', \request('images'))->delete();
 

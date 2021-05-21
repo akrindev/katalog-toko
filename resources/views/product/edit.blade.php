@@ -113,6 +113,21 @@
                       </div>
                       @enderror
                     </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Kategori</label>
+                        <div class="selectgroup selectgroup-pills">
+
+                            @foreach ((new App\Models\Category)->get() as $item)
+
+                            <label class="selectgroup-item">
+                                <input type="radio" name="category" value="{{ $item->id }}" class="selectgroup-input" {{ in_array($item->id, $product->categories->pluck('id')->toArray())  ? 'checked="' : '' }}>
+                                <span class="selectgroup-button selectgroup-button-icon"> {{ $item->name }} </span>
+                            </label>
+
+                            @endforeach
+                        </div>
+                    </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">

@@ -12,7 +12,7 @@
 
             <div class="flex flex-row overflow-x-scroll space-x-2 my-5">
 
-                @forelse ((new App\Models\Category)->get() as $item)
+                @forelse ((new App\Models\Category)->orderByDesc('id')->get() as $item)
 
                 <a href="/category/{{ $item->name }}" class="flex-1 px-4 py-1 rounded-lg bg-purple-100 hover:bg-purple-600 hover:text-white" > {{ $item->name }} </a>
                 @empty
