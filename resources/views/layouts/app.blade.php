@@ -6,7 +6,7 @@
     <title>@yield('title') - Katalog Toko </title>
     <meta name="description" content="@yield('description')">
 
-    <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+    <link rel="stylesheet" href="/css/app.css">
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 </head>
