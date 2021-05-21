@@ -22,6 +22,9 @@
             </div>
         </div>
               <div class="col-md-8">
+                  <div class="my-3">
+                      <a href="/dashboard/add/product" class="btn btn-outline-primary"><i class="fe fe-plus"></i> Tambah Product </a>
+                  </div>
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Products</h3>
