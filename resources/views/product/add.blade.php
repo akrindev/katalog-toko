@@ -16,7 +16,7 @@
                   <h3 class="card-title">Tambah Product</h3>
                 </div>
                 <div class="card-body">
-                  <form action="/dashboard/add/product/" method="post">
+                  <form action="{{ route('dashboard.add.product') }}" method="post">
 
                     <div class="row">
                         <div class="col-md-6">

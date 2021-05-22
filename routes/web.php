@@ -25,8 +25,8 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::patch('/setting/akun', [AuthenticatedSessionController::class, 'updateSettingAccount'])->name('dashboard.setting.akun');
     Route::patch('/setting/akun/password', [AuthenticatedSessionController::class, 'updatePassword'])->name('dashboard.setting.password');
 
-    Route::get('/add/product', [AdminController::class, 'addProduct']);
-    Route::post('/add/product', [AdminController::class, 'storeProduct']);
+    Route::get('/add/product', [AdminController::class, 'addProduct'])->name('dashboard.add.product');
+    Route::post('/add/product', [AdminController::class, 'storeProduct'])->name('dashboard.add.product');
 
     // products
     Route::get('/products', [AdminController::class, 'products'])->name('dashboard.products');

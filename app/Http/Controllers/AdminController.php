@@ -46,30 +46,28 @@ class AdminController extends Controller
 
         $product = new Product;
 
-        DB::transaction(function() use ($data, $product) {
 
-            $img = [];
-            if(! \request()->images) {
+        $img = [];
+        if(! \request()->images) {
+            \array_push($img, [
+                'url'   => 'http://placekitten.com/400/300'
+            ]);
+        } else {
+
+            foreach(request()->images as $image) {
                 \array_push($img, [
-                    'url'   => 'http://placekitten.com/400/300'
+                    'url' => $image
                 ]);
-            } else {
-
-                foreach(request()->images as $image) {
-                    \array_push($img, [
-                        'url' => $image
-                    ]);
-                }
             }
+        }
 
-            $cat = Category::find(request()->category);
+        $cat = Category::find(request()->category);
 
-            $product->fill($data + ['slug' => Str::slug($data['name'].Str::random(5))])->save();
+        $product->fill($data + ['slug' => Str::slug($data['name'].Str::random(5))])->save();
 
-            $product->categories()->sync($cat);
+        $product->categories()->sync($cat);
 
-            $product->images()->createMany($img);
-        });
+        $product->images()->createMany($img);
 
         session()->flash('success', 'Product berhasil di tambahkan');
 
@@ -98,29 +96,26 @@ class AdminController extends Controller
             'stock' => 'required|boolean',
         ]);
 
-        DB::transaction(function () use ($data, $product) {
 
-            $product->update($data);
+        $product->update($data);
 
-            $cat = Category::find(request()->category);
+        $cat = Category::find(request()->category);
 
-            $product->categories()->sync($cat);
+        $product->categories()->sync($cat);
 
-            $product->images()->whereNotIn('url', \request('images'))->delete();
+        $product->images()->whereNotIn('url', \request('images'))->delete();
 
-            foreach (request()->images as $image) {
-                if(is_null($image)) {
-                    continue;
-                }
-
-                $product->images()->updateOrCreate([
-                    'url' => $image
-                ], [
-                    'url' => $image
-                ]);
+        foreach (request()->images as $image) {
+            if(is_null($image)) {
+                continue;
             }
 
-        });
+            $product->images()->updateOrCreate([
+                'url' => $image
+            ], [
+                'url' => $image
+            ]);
+        }
 
         session()->flash('success', 'Product berhasil di update');
 
