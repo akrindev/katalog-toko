@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $toko_name)
+@section('title', $product->name)
 @section('description', $product->description)
 @section('image', $product->images->first()->url)
 
