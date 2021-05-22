@@ -40,6 +40,35 @@
                             @enderror
                         </div>
 
+                        <div class="form-group">
+                            <label class="form-label">Whatsapp</label>
+                            <input type="text" class="form-control @error('whatsapp') is-invalid @enderror" name="whatsapp" value="{{ $user->whatsapp }}" required>
+                            @error('whatsapp')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Facebook</label>
+                            <input type="text" class="form-control @error('facebook') is-invalid @enderror" name="facebook" value="{{ $user->facebook }}" required>
+                            @error('facebook')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Instagram</label>
+                            <input type="text" class="form-control @error('instagram') is-invalid @enderror" name="instagram" value="{{ $user->instagram }}" required>
+                            @error('instagram')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
                         <div class="form-footer">
                             <button class="btn btn-primary btn-block" type="submit">Save</button>
                         </div>

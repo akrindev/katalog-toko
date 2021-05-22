@@ -18,6 +18,9 @@ class CreateShopsTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('logo')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('whatsapp')->nullable();
             $table->timestamps();
         });
     }

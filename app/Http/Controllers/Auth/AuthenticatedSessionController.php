@@ -69,6 +69,7 @@ class AuthenticatedSessionController extends Controller
     public function updateSettingAccount()
     {
         $user = User::find(auth()->id());
+        $toko = Shop::first();
 
         // update hanya nama dan email user
 
@@ -78,6 +79,11 @@ class AuthenticatedSessionController extends Controller
         ]);
 
         $user->update($data);
+        $toko->update([
+            'whatsapp'  => \request()->whatsapp,
+            'facebook'  => \request()->facebook,
+            'instagram'  => \request()->instagram,
+        ]);
 
         session()->flash('success', 'Akun di perbarui');
 

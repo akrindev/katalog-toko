@@ -33,11 +33,14 @@ class AppServiceProvider extends ServiceProvider
 
         Schema::defaultStringLength(191);
 
-        if(Schema::hasTable('shops')) {
+        if(\DB::connection()->getPdo() && Schema::hasTable('shops')) {
             $toko = Shop::first();
         }
 
         View::share('toko_name', $toko->name ?? 'Toko');
         View::share('toko_description', $toko->description ?? 'Toko');
+        View::share('toko_whatsapp', $toko->name ?? 'Toko');
+        View::share('toko_facebook', $toko->facebook ?? 'Toko');
+        View::share('toko_instagram', $toko->instagram ?? 'Toko');
     }
 }

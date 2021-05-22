@@ -17,6 +17,9 @@ class TokoSeeder extends Seeder
         Shop::firstOrCreate([
             'name' => 'Dian Busana',
             'description' => 'Lorem Ipsum',
+            'whatsapp' => '62812345',
+            'facebook' => 'https://facebook.com/nama_toko',
+            'instagram' => 'instagram_username',
             'logo' => 'http://placekitten.com/100/100'
         ]);
     }
