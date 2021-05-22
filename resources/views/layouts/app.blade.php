@@ -6,6 +6,11 @@
     <title>@yield('title') - Katalog Toko </title>
     <meta name="description" content="@yield('description')">
 
+	<meta property="og:title" content="@yield('title')" />
+	<meta property="og:url" content="{{ url()->current() }}"/>
+	<meta property="og:description" content="@yield('description')" />
+	<meta property="og:image" content="@yield('image')" />
+
     <link rel="stylesheet" href="/css/app.css">
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -16,14 +21,14 @@
     <main class="relative min-h-screen">
         <!--  nav -->
         <nav class="bg-black text-blueGray-100">
-            <div class="max-w-5xl mx-auto p-4 md:py-6 md:px-0 md:text-3xl font-semibold">
+            <div class="max-w-5xl mx-auto p-4 lg:py-6 lg:px-0 md:text-3xl font-semibold">
                 <a href="/">{{ $toko_name }}</a>
             </div>
         </nav>
 
 
         <!-- content -->
-        <section class="content max-w-5xl mx-auto p-4 md:p-0 my-5">
+        <section class="content max-w-5xl mx-auto p-4 lg:p-0 my-5">
             @yield('content')
         </section>
     </main>

@@ -19,7 +19,9 @@ class ShopController extends Controller
         $product = Product::whereSlug($slug)
                     ->firstOrFail();
 
-        return view('show', compact('product'));
+		$products = Product::inRandomOrder()->take(4)->get();
+
+        return view('show', compact('product', 'products'));
     }
 
     public function category($name)

@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
 
         View::share('toko_name', $toko->name ?? 'Toko');
         View::share('toko_description', $toko->description ?? 'Toko');
-        View::share('toko_whatsapp', $toko->name ?? 'Toko');
+        View::share('toko_whatsapp', $toko->whatsapp ?? 'Toko');
         View::share('toko_facebook', $toko->facebook ?? 'Toko');
         View::share('toko_instagram', $toko->instagram ?? 'Toko');
     }

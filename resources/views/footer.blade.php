@@ -4,7 +4,8 @@
         <div class="flex items-start mb-5 lg:mb-0">
 
     <div>
-        <span class="text-2xl text-gray-200">{{ $toko_description }}</span>
+        <span class="text-gray-200 font-bold">{{ $toko_name }}</span> <br>
+		<p class="text-white">{{ $toko_description }}</p>
     </div>
 
 </div>
@@ -33,6 +34,7 @@
       </svg>
     </a>
 </div>
+
 </div>
 
 </footer>

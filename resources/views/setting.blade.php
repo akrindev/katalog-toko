@@ -38,6 +38,37 @@
                             @enderror
                         </div>
 
+
+
+                        <div class="form-group">
+                            <label class="form-label">Whatsapp</label>
+                            <input type="text" class="form-control @error('whatsapp') is-invalid @enderror" name="whatsapp" value="{{ $toko->whatsapp }}" required>
+                            @error('whatsapp')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Facebook</label>
+                            <input type="text" class="form-control @error('facebook') is-invalid @enderror" name="facebook" value="{{ $toko->facebook }}" required>
+                            @error('facebook')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Instagram</label>
+                            <input type="text" class="form-control @error('instagram') is-invalid @enderror" name="instagram" value="{{ $toko->instagram }}" required>
+                            @error('instagram')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
                         <div class="form-footer">
                             <button class="btn btn-primary" type="submit">Save</button>
                         </div>

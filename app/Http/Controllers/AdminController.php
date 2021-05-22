@@ -148,6 +148,9 @@ class AdminController extends Controller
         $data = request()->validate([
             'name'  => 'required|min:2',
             'description'  => 'nullable',
+			'whatsapp'	=> 'required',
+			'facebook'	=> 'required',
+			'instagram'	=> 'required'
         ]);
 
         Shop::first()->update($data);
