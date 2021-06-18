@@ -14,12 +14,9 @@ class ShopController extends Controller
         return view('home', compact('products'));
     }
 
-    public function show($slug)
+    public function show(Product $product)
     {
-        $product = Product::whereSlug($slug)
-                    ->firstOrFail();
-
-		$products = Product::inRandomOrder()->take(4)->get();
+        $products = Product::inRandomOrder()->take(4)->get();
 
         return view('show', compact('product', 'products'));
     }
@@ -27,8 +24,8 @@ class ShopController extends Controller
     public function category($name)
     {
         $products = Product::whereHas('categories', function ($query) use ($name) {
-                        $query->where('name', '=', $name);
-                    })->latest()->paginate(16);
+            $query->where('name', '=', $name);
+        })->latest()->paginate(16);
 
         return view('home', compact('products', 'name'));
     }

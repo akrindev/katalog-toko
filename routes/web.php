@@ -5,12 +5,12 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('/', [ShopController::class, 'home']);
 
 
-Route::get('/product/{slug}', [ShopController::class, 'show']);
+Route::get('/product/{product}', [ShopController::class, 'show']);
 Route::get('/category/{name}', [ShopController::class, 'category']);
 
 

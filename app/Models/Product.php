@@ -12,7 +12,7 @@ class Product extends Model
 
     protected $with = [
         'images',
-        'categories'
+        'categories',
     ];
 
     protected $guarded = [];
@@ -30,6 +30,11 @@ class Product extends Model
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = $value;
-        $this->attributes['slug'] = Str::slug($value.time());
+        $this->attributes['slug'] = Str::slug($value . time());
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }
