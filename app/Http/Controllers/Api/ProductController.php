@@ -63,6 +63,12 @@ class ProductController extends Controller
             $query->where('name', $name);
         })->latest()->paginate();
 
+        $products->map(function ($item) {
+            $item->featured_image = $item->images->first();
+
+            return $item;
+        });
+
         return new ProductCollection($products);
     }
     /**
