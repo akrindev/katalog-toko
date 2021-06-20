@@ -23,13 +23,13 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'slug'  => Str::slug($this->faker->name),
-            'description'   => $this->faker->text,
-            'price' => $this->faker->numberBetween(80000, 120000),
+            'name' => $this->faker->title,
+            'slug'  => Str::slug($this->faker->title) . time(),
+            'description'   => $this->faker->paragraph(5),
+            'price' => $this->faker->numberBetween(80000, 220000),
             'size'  => "s,m,l,xl",
-            'discount'  => $this->faker->numberBetween(5,35),
-            'stock' => $this->faker->numberBetween(0,1)
+            'discount'  => $this->faker->numberBetween(0, 35),
+            'stock' => $this->faker->numberBetween(0, 1)
         ];
     }
 }

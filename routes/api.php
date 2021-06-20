@@ -18,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/random', [ProductController::class, 'random']);
 Route::get('/product/{product}', [ProductController::class, 'show']);
+Route::get('/category/', [ProductController::class, 'categories']);
+Route::get('/category/{name}', [ProductController::class, 'category']);

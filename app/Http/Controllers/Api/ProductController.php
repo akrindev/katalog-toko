@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
+use App\Http\Resources\CategoryCollection;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -49,5 +51,28 @@ class ProductController extends Controller
         $products = Product::inRandomOrder()->take(4)->get();
 
         return new ProductCollection($products);
+    }
+
+    /**
+     * Get Product by category
+     * @return \Illuminate\Http\Client\Response
+     */
+    public function category($name)
+    {
+        $products = Product::whereHas('categories', function ($query) use ($name) {
+            $query->where('name', $name);
+        })->latest()->paginate();
+
+        return new ProductCollection($products);
+    }
+    /**
+     * get all categories
+     * @return \Illuminate\Http\Client\Response
+     */
+    public function categories()
+    {
+        $categories = Category::get();
+
+        return new CategoryCollection($categories);
     }
 }
